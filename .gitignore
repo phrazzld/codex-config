@@ -1,0 +1,18 @@
+# Credentials and runtime state
+auth.json
+internal_storage.json
+history.json
+history.jsonl
+update-check.json
+version.json
+
+# Session transcripts and logs
+/sessions/
+/log/
+
+# Secrets and environment overrides
+/secrets/
+.env
+
+# OS noise
+.DS_Store

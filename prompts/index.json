@@ -1,0 +1,62 @@
+{
+  "workflow": [
+    {
+      "name": "ultrathink",
+      "description": "Deep critical evaluation of plans, designs, and specifications for simplicity, robustness, and system health",
+      "aliases": ["think", "critique", "review-design"],
+      "path": "prompts/workflow/ultrathink.md"
+    },
+    {
+      "name": "ship",
+      "description": "Complete workflow from specification to shipped pull request",
+      "aliases": ["full-cycle", "end-to-end"],
+      "path": "prompts/workflow/ship.md"
+    },
+    {
+      "name": "flesh",
+      "description": "Transform vague tasks into executable specifications with specific files, approach, and success criteria",
+      "aliases": ["clarify", "specify-task"],
+      "path": "prompts/workflow/flesh.md"
+    },
+    {
+      "name": "execute",
+      "description": "Execute the next task from TODO.md with direct tactical focus",
+      "aliases": ["exec", "do"],
+      "path": "prompts/workflow/execute.md"
+    },
+    {
+      "name": "architect",
+      "description": "Transform PRD into concrete architecture with module design and implementation pseudocode",
+      "aliases": ["design", "blueprint"],
+      "path": "prompts/workflow/architect.md"
+    }
+  ],
+  "quality": [
+    {
+      "name": "qa-cycle",
+      "description": "Integrated manual QA with inline debugging and fix tracking",
+      "aliases": ["qa", "test"],
+      "path": "prompts/quality/qa-cycle.md"
+    },
+    {
+      "name": "pr-ready",
+      "description": "Validate pull request readiness with comprehensive quality gates",
+      "aliases": ["ready", "validate"],
+      "path": "prompts/quality/pr-ready.md"
+    }
+  ],
+  "review": [
+    {
+      "name": "ousterhout",
+      "description": "Apply Ousterhout's software design principles to detect shallow modules, information leakage, and complexity red flags",
+      "aliases": ["complexity", "module-depth"],
+      "path": "prompts/review/ousterhout.md"
+    },
+    {
+      "name": "testing",
+      "description": "Apply testing philosophy - test behavior not implementation, minimize mocks, AAA structure",
+      "aliases": ["test-review", "test-quality"],
+      "path": "prompts/review/testing.md"
+    }
+  ]
+}
