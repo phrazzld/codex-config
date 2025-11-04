@@ -6,8 +6,19 @@ if [[ -z "${EXA_API_KEY:-}" ]]; then
   exit 1
 fi
 
-curl --silent --fail --head \
-  --header "x-api-key: $EXA_API_KEY" \
-  "https://api.exa.ai/v1/search" >/dev/null
+status="$(curl --silent --output /dev/null --write-out '%{http_code}' \
+  -H "x-api-key: $EXA_API_KEY" \
+  "https://api.exa.ai/v1/search")"
 
-echo "EXA MCP endpoint reachable"
+case "$status" in
+  401)
+    echo "EXA API key rejected (401)" >&2
+    exit 1
+    ;;
+  000)
+    echo "Failed to reach EXA endpoint" >&2
+    exit 1
+    ;;
+esac
+
+echo "EXA MCP endpoint reachable (HTTP $status)"
