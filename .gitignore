@@ -11,7 +11,9 @@ version.json
 /log/
 
 # Secrets and environment overrides
-/secrets/
+/secrets/*
+!/secrets/README.md
+!/secrets/*.example
 .env
 
 # OS noise

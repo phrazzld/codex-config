@@ -1,6 +1,6 @@
 # Codex CLI Configuration
 
-OpenAI Codex CLI setup with workflows, prompts, and profiles ported from Claude Code.
+OpenAI Codex CLI setup with workflows, prompts, slash commands, and profiles ported from Claude Code.
 
 ## Quick Start
 
@@ -15,11 +15,21 @@ codex "/prompts:ultrathink"
 codex "/prompts:ship"
 codex "/prompts:architect"
 codex "/prompts:execute"
+codex "/slash:doctor"
 ```
+
+## Repository Layout
+
+- `config/` – Canonical CLI configuration (`config.toml`, `config.json`) plus MCP blocks
+- `prompts/` – Prompt library organized by category, catalogued via `prompts/index.json`
+- `slash/` – Custom slash commands and `manifest.json`
+- `scripts/` – Operational tooling (`doctor`, `lint-config`, `check-slash`, `check-mcp-exa`)
+- `secrets/` – Non-committed env stubs (copy `exa.env.example` → `exa.env`, export before use)
+- `docs/CHANGELOG.md` – Versioned history for repo changes
 
 ## Profiles
 
-Configured in `config.toml`, profiles switch between different model and approval settings:
+Configured in `config/config.toml`, profiles switch between different model and approval settings:
 
 ### **ultrathink** - Deep Architectural Review
 - Model: GPT-5
@@ -125,11 +135,36 @@ alias cdx-ready='codex "/prompts:pr-ready"'
 
 Then reload: `source ~/.zshrc`
 
+## Slash Commands
+
+- `slash/manifest.json` controls discovery. Run `scripts/check-slash.sh` to verify registration.
+- `slash/commands/doctor.md` exposes `/slash:doctor` for turnkey environment diagnostics.
+- Add new commands by dropping markdown with front matter in `slash/commands/` and updating the manifest.
+
+## EXA MCP Integration
+
+1. Copy `secrets/exa.env.example` → `secrets/exa.env`, populate `EXA_API_KEY`.
+2. Export the variable (`source secrets/exa.env` or add to your shell profile).
+3. Run `scripts/check-mcp-exa.sh` to confirm connectivity.
+4. Codex consumes the key via the `[mcp.exa]` block in `config/config.toml` or `config/config.json`.
+
+## Operational Scripts
+
+```bash
+scripts/doctor.sh        # One-stop health check (git, config, slash, MCP)
+scripts/lint-config.sh   # Validates JSON/TOML and prompt index
+scripts/check-slash.sh   # Ensures manifest entries resolve to files
+scripts/check-mcp-exa.sh # Lightweight EXA MCP ping (requires EXA_API_KEY)
+```
+
+Integrate `scripts/doctor.sh` into your pre-flight routine before large edits.
+
 ## Configuration Files
 
-- **config.toml** - Main configuration with profiles and project trust levels
+- **config/config.toml** - Main configuration with profiles, project trust levels, and MCP settings
+- **config/config.json** - Provider registry mirrored for Codex
 - **AGENTS.md** - Core philosophy and design principles
-- **prompts/** - Custom prompt library organized by category
+- **prompts/** - Custom prompt library organized by category (see `prompts/index.json`)
 
 ## Philosophy
 
@@ -163,7 +198,7 @@ Access via `/prompts:my-prompt`
 
 ### Adding New Profiles
 
-Edit `config.toml`:
+Edit `config/config.toml`:
 
 ```toml
 [profiles.my-profile]
@@ -183,7 +218,7 @@ Use via `codex --profile my-profile`
 | `/ship` | `/prompts:ship` | Workflow orchestration |
 | `/execute` | `/prompts:execute` | Task execution |
 | Skills | Review prompts | Converted to `/prompts:*` |
-| Agents | Not ported | Consider MCP integration |
+| Agents | `/slash:*` | Implemented via manifest + markdown commands |
 
 ## Resources
 

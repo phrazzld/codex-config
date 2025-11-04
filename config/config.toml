@@ -27,6 +27,13 @@ model = "gpt-5"
 model_reasoning_effort = "low"
 approval_policy = "on-failure"
 sandbox_mode = "workspace-write"
+
+# MCP integrations
+[mcp.exa]
+transport = "http"
+host = "https://api.exa.ai"
+api_key_env = "EXA_API_KEY"
+
 [projects."/Users/phaedrus/Development/adminifi/web"]
 trust_level = "trusted"
 

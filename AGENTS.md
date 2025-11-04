@@ -41,6 +41,9 @@ Sacrifice grammar for the sake of concision.
 **Parallel Execution:**
 * Launch multiple specialized analyses concurrently when investigating distinct concerns
 
+**Operational Hygiene:**
+* Run `scripts/doctor.sh` before major changes—verifies git, config, slash manifest, MCP connectivity
+
 ## Reasoning Modes
 
 Use profiles to match task complexity:

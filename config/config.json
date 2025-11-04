@@ -61,6 +61,13 @@
     "saveHistory": true,
     "sensitivePatterns": []
   },
+  "mcp": {
+    "exa": {
+      "transport": "http",
+      "host": "https://api.exa.ai",
+      "apiKeyEnv": "EXA_API_KEY"
+    }
+  },
   "tools": {
     "shell": {
       "maxBytes": 10240,

@@ -1,0 +1,11 @@
+{
+  "commands": [
+    {
+      "name": "doctor",
+      "description": "Comprehensive health check for Codex CLI environment",
+      "aliases": ["health", "status"],
+      "path": "slash/commands/doctor.md",
+      "enabled": true
+    }
+  ]
+}
