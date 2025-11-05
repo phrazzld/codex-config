@@ -84,6 +84,8 @@ All command markdown lives directly in `prompts/`. Categories below reflect nami
 ### Git
 
 - **/prompts:pr** - Generate crisp PR titles/bodies and share next steps
+- **/prompts:git-respond** - Triage review feedback and craft action plan + replies
+- **/prompts:ci** - Investigate failing checks and produce resolution tasks
 
 ### Slash Commands
 
@@ -153,6 +155,8 @@ alias cdx-ready='codex "/prompts:pr-ready"'
 alias cdx-debug='codex "/prompts:debug"'
 alias cdx-pr='codex "/prompts:pr"'
 alias cdx-review='codex "/prompts:code-review"'
+alias cdx-respond='codex "/prompts:git-respond"'
+alias cdx-ci='codex "/prompts:ci"'
 ```
 
 Then reload: `source ~/.zshrc`

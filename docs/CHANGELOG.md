@@ -6,6 +6,7 @@ All notable changes to this setup will be documented in this file.
 - Flattened prompt/slash markdown to top-level for Codex discovery and replaced manifest tooling with prompt index validation
 - Added `scripts/check-prompts.sh` and refreshed documentation to match new layout
 - Ported core Claude workflows (`prime`, `spec`, `plan`, `debug`, `pr`, `code-review`) with self-contained instructions
+- Added Git support prompts (`git-respond`, `ci`) for review response and pipeline triage
 
 ## [2025-11-04]
 - Initial baseline commit

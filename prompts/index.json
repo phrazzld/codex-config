@@ -104,6 +104,20 @@
       "description": "Summarize branch changes and generate a crisp pull request title and body before publishing",
       "aliases": ["git-pr", "pull-request"],
       "path": "prompts/pr.md"
+    },
+    {
+      "name": "git-respond",
+      "category": "git",
+      "description": "Triage PR review feedback, plan fixes, and document responses",
+      "aliases": ["respond", "review-comments"],
+      "path": "prompts/git-respond.md"
+    },
+    {
+      "name": "ci",
+      "category": "quality",
+      "description": "Diagnose failing CI runs, distinguish code vs infrastructure issues, and generate resolution tasks",
+      "aliases": ["ci-fix", "pipeline"],
+      "path": "prompts/ci.md"
     }
   ],
   "slash": [
