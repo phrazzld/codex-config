@@ -1,6 +1,27 @@
 {
   "prompts": [
     {
+      "name": "prime",
+      "category": "workflow",
+      "description": "Rapidly gather repository, task, and pattern context before making changes",
+      "aliases": ["prep", "context"],
+      "path": "prompts/prime.md"
+    },
+    {
+      "name": "spec",
+      "category": "workflow",
+      "description": "Convert rough requirements into a precise PRD with researched alternatives and clarifying questions",
+      "aliases": ["define", "specification"],
+      "path": "prompts/spec.md"
+    },
+    {
+      "name": "plan",
+      "category": "workflow",
+      "description": "Break DESIGN.md or PRD into atomic, testable implementation tasks for TODO.md",
+      "aliases": ["task-plan", "breakdown"],
+      "path": "prompts/plan.md"
+    },
+    {
       "name": "ultrathink",
       "category": "workflow",
       "description": "Deep critical evaluation of plans, designs, and specifications for simplicity, robustness, and system health",
@@ -36,6 +57,13 @@
       "path": "prompts/architect.md"
     },
     {
+      "name": "debug",
+      "category": "workflow",
+      "description": "Diagnose and resolve defects through structured investigation and hypothesis-driven fixes",
+      "aliases": ["bug-hunt", "diagnose"],
+      "path": "prompts/debug.md"
+    },
+    {
       "name": "qa-cycle",
       "category": "quality",
       "description": "Integrated manual QA with inline debugging and fix tracking",
@@ -62,6 +90,20 @@
       "description": "Apply testing philosophy - test behavior not implementation, minimize mocks, AAA structure",
       "aliases": ["test-review", "test-quality"],
       "path": "prompts/testing.md"
+    },
+    {
+      "name": "code-review",
+      "category": "review",
+      "description": "Run a two-phase self-review to clean changes, surface risks, and generate actionable follow-ups",
+      "aliases": ["git-code-review", "review"],
+      "path": "prompts/code-review.md"
+    },
+    {
+      "name": "pr",
+      "category": "git",
+      "description": "Summarize branch changes and generate a crisp pull request title and body before publishing",
+      "aliases": ["git-pr", "pull-request"],
+      "path": "prompts/pr.md"
     }
   ],
   "slash": [

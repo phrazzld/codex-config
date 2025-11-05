@@ -60,23 +60,30 @@ All command markdown lives directly in `prompts/`. Categories below reflect nami
 
 ### Workflow
 
-- **/prompts:ultrathink** - Deep critical evaluation of designs for simplicity and complexity
-- **/prompts:ship** - Complete workflow from specification to PR
-- **/prompts:architect** - Transform PRD into concrete architecture with pseudocode
-- **/prompts:flesh** - Make vague tasks specific and executable
-- **/prompts:execute** - Execute next task from TODO.md with quality focus
-- **/prompts:qa-cycle** - Integrated manual QA with inline debugging
-- **/prompts:pr-ready** - Validate PR readiness with quality gates
+- **/prompts:prime** - Recon current branch, tasks, and conventions before acting
+- **/prompts:spec** - Investigate, compare alternatives, and produce a PRD
+- **/prompts:plan** - Break the PRD into atomic TODO.md tasks with tests and estimates
+- **/prompts:architect** - Transform PRD into module design + pseudocode
+- **/prompts:flesh** - Make vague TODOs executable and scoped
+- **/prompts:execute** - Implement the next task with tactical focus
+- **/prompts:ship** - Orchestrate end-to-end feature delivery
+- **/prompts:debug** - Diagnose defects through hypothesis-driven investigation
 
 ### Quality
 
-- **/prompts:qa-cycle** - Interactive testing workflow with fix tracking
+- **/prompts:qa-cycle** - Integrated manual QA with inline debugging
 - **/prompts:pr-ready** - Automated quality gate validation
 
 ### Review
 
-- **/prompts:ousterhout** - Apply Ousterhout's design principles (deep modules, information hiding)
-- **/prompts:testing** - Review tests for behavior vs implementation, mocking philosophy
+- **/prompts:ultrathink** - Deep critical evaluation of designs for simplicity and complexity
+- **/prompts:ousterhout** - Spot shallow modules, leakage, red flags
+- **/prompts:testing** - Review tests for behavior vs implementation
+- **/prompts:code-review** - Two-phase cleanup + brutal honesty self-review
+
+### Git
+
+- **/prompts:pr** - Generate crisp PR titles/bodies and share next steps
 
 ### Slash Commands
 
@@ -91,10 +98,16 @@ All command markdown lives directly in `prompts/`. Categories below reflect nami
 codex --profile ship "/prompts:ship"
 
 # Or step-by-step:
-codex "/prompts:architect"  # Design architecture
-codex "/prompts:execute"    # Implement tasks
+codex "/prompts:prime"      # Recon project state and conventions
+codex "/prompts:spec"       # Produce the PRD with alternatives
+codex "/prompts:plan"       # Build TODO.md from DESIGN/TASK
+codex "/prompts:flesh"      # Clarify any vague tasks
+codex "/prompts:execute"    # Implement the next task
+codex "/prompts:debug"      # Optional: use for active bug hunts
 codex "/prompts:qa-cycle"   # Test and fix
-codex "/prompts:pr-ready"   # Validate quality
+codex "/prompts:pr"         # Draft PR title + body
+codex "/prompts:code-review"# Brutal self-review before handoff
+codex "/prompts:pr-ready"   # Final quality gate
 ```
 
 ### Design Review
@@ -131,9 +144,15 @@ alias cdx-fast='codex --profile fast'
 # Common prompts
 alias cdx-ultra='codex "/prompts:ultrathink"'
 alias cdx-arch='codex "/prompts:architect"'
+alias cdx-prime='codex "/prompts:prime"'
+alias cdx-spec='codex "/prompts:spec"'
+alias cdx-plan='codex "/prompts:plan"'
 alias cdx-do='codex "/prompts:execute"'
 alias cdx-qa='codex "/prompts:qa-cycle"'
 alias cdx-ready='codex "/prompts:pr-ready"'
+alias cdx-debug='codex "/prompts:debug"'
+alias cdx-pr='codex "/prompts:pr"'
+alias cdx-review='codex "/prompts:code-review"'
 ```
 
 Then reload: `source ~/.zshrc`

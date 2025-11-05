@@ -5,3 +5,4 @@
 - All prompt/slash markdown lives directly in `prompts/` so Codex discovers them without symlinks.
 - Automation scripts reside in `scripts/` (`doctor`, `lint-config`, `check-prompts`, `check-mcp-exa`).
 - Secrets kept out of git under `secrets/` (copy `exa.env.example`).
+- Core workflow prompts (`prime`, `spec`, `plan`, `debug`, `pr`, `code-review`) ported from Claude with self-contained guidance.
