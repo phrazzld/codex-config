@@ -42,7 +42,7 @@ Sacrifice grammar for the sake of concision.
 * Launch multiple specialized analyses concurrently when investigating distinct concerns
 
 **Operational Hygiene:**
-* Run `scripts/doctor.sh` before major changes—verifies git, config, slash manifest, MCP connectivity
+* Run `scripts/doctor.sh` before major changes—verifies git status, config validity, prompt discovery, MCP connectivity
 
 ## Reasoning Modes
 

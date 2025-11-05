@@ -1,62 +1,75 @@
 {
-  "workflow": [
+  "prompts": [
     {
       "name": "ultrathink",
+      "category": "workflow",
       "description": "Deep critical evaluation of plans, designs, and specifications for simplicity, robustness, and system health",
       "aliases": ["think", "critique", "review-design"],
-      "path": "prompts/workflow/ultrathink.md"
+      "path": "prompts/ultrathink.md"
     },
     {
       "name": "ship",
+      "category": "workflow",
       "description": "Complete workflow from specification to shipped pull request",
       "aliases": ["full-cycle", "end-to-end"],
-      "path": "prompts/workflow/ship.md"
+      "path": "prompts/ship.md"
     },
     {
       "name": "flesh",
+      "category": "workflow",
       "description": "Transform vague tasks into executable specifications with specific files, approach, and success criteria",
       "aliases": ["clarify", "specify-task"],
-      "path": "prompts/workflow/flesh.md"
+      "path": "prompts/flesh.md"
     },
     {
       "name": "execute",
+      "category": "workflow",
       "description": "Execute the next task from TODO.md with direct tactical focus",
       "aliases": ["exec", "do"],
-      "path": "prompts/workflow/execute.md"
+      "path": "prompts/execute.md"
     },
     {
       "name": "architect",
+      "category": "workflow",
       "description": "Transform PRD into concrete architecture with module design and implementation pseudocode",
       "aliases": ["design", "blueprint"],
-      "path": "prompts/workflow/architect.md"
-    }
-  ],
-  "quality": [
+      "path": "prompts/architect.md"
+    },
     {
       "name": "qa-cycle",
+      "category": "quality",
       "description": "Integrated manual QA with inline debugging and fix tracking",
       "aliases": ["qa", "test"],
-      "path": "prompts/quality/qa-cycle.md"
+      "path": "prompts/qa-cycle.md"
     },
     {
       "name": "pr-ready",
+      "category": "quality",
       "description": "Validate pull request readiness with comprehensive quality gates",
       "aliases": ["ready", "validate"],
-      "path": "prompts/quality/pr-ready.md"
-    }
-  ],
-  "review": [
+      "path": "prompts/pr-ready.md"
+    },
     {
       "name": "ousterhout",
+      "category": "review",
       "description": "Apply Ousterhout's software design principles to detect shallow modules, information leakage, and complexity red flags",
       "aliases": ["complexity", "module-depth"],
-      "path": "prompts/review/ousterhout.md"
+      "path": "prompts/ousterhout.md"
     },
     {
       "name": "testing",
+      "category": "review",
       "description": "Apply testing philosophy - test behavior not implementation, minimize mocks, AAA structure",
       "aliases": ["test-review", "test-quality"],
-      "path": "prompts/review/testing.md"
+      "path": "prompts/testing.md"
+    }
+  ],
+  "slash": [
+    {
+      "name": "doctor",
+      "description": "Comprehensive health check for Codex CLI environment",
+      "aliases": ["health", "status"],
+      "path": "prompts/doctor.md"
     }
   ]
 }

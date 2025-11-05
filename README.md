@@ -15,15 +15,14 @@ codex "/prompts:ultrathink"
 codex "/prompts:ship"
 codex "/prompts:architect"
 codex "/prompts:execute"
-codex "/slash:doctor"
+codex "/prompts:doctor"
 ```
 
 ## Repository Layout
 
 - `config/` – Canonical CLI configuration (`config.toml`, `config.json`) plus MCP blocks
-- `prompts/` – Prompt library organized by category, catalogued via `prompts/index.json`
-- `slash/` – Custom slash commands and `manifest.json`
-- `scripts/` – Operational tooling (`doctor`, `lint-config`, `check-slash`, `check-mcp-exa`)
+- `prompts/` – Top-level prompt + slash markdown (Codex loads filenames directly) with metadata in `prompts/index.json`
+- `scripts/` – Operational tooling (`doctor`, `lint-config`, `check-prompts`, `check-mcp-exa`)
 - `secrets/` – Non-committed env stubs (copy `exa.env.example` → `exa.env`, export before use)
 - `docs/CHANGELOG.md` – Versioned history for repo changes
 
@@ -57,9 +56,9 @@ Configured in `config/config.toml`, profiles switch between different model and 
 
 ## Custom Prompts
 
-Located in `prompts/` directory, organized by category:
+All command markdown lives directly in `prompts/`. Categories below reflect naming conventions used in `prompts/index.json`.
 
-### Workflow Prompts (`prompts/workflow/`)
+### Workflow
 
 - **/prompts:ultrathink** - Deep critical evaluation of designs for simplicity and complexity
 - **/prompts:ship** - Complete workflow from specification to PR
@@ -69,15 +68,19 @@ Located in `prompts/` directory, organized by category:
 - **/prompts:qa-cycle** - Integrated manual QA with inline debugging
 - **/prompts:pr-ready** - Validate PR readiness with quality gates
 
-### Quality Prompts (`prompts/quality/`)
+### Quality
 
 - **/prompts:qa-cycle** - Interactive testing workflow with fix tracking
 - **/prompts:pr-ready** - Automated quality gate validation
 
-### Review Prompts (`prompts/review/`)
+### Review
 
 - **/prompts:ousterhout** - Apply Ousterhout's design principles (deep modules, information hiding)
 - **/prompts:testing** - Review tests for behavior vs implementation, mocking philosophy
+
+### Slash Commands
+
+- **/prompts:doctor** - Environment doctor summarizing git/config/prompt/MCP health
 
 ## Example Workflows
 
@@ -137,9 +140,9 @@ Then reload: `source ~/.zshrc`
 
 ## Slash Commands
 
-- `slash/manifest.json` controls discovery. Run `scripts/check-slash.sh` to verify registration.
-- `slash/commands/doctor.md` exposes `/slash:doctor` for turnkey environment diagnostics.
-- Add new commands by dropping markdown with front matter in `slash/commands/` and updating the manifest.
+- Codex only reads markdown directly under `~/.codex/prompts/`; keep slash command files (e.g. `prompts/doctor.md`) at the top level.
+- Run `scripts/check-prompts.sh` to ensure every entry listed in `prompts/index.json` has a matching file with front matter.
+- Add new slash commands by placing a markdown file in `prompts/` and adding metadata to `prompts/index.json`.
 
 ## EXA MCP Integration
 
@@ -151,10 +154,10 @@ Then reload: `source ~/.zshrc`
 ## Operational Scripts
 
 ```bash
-scripts/doctor.sh        # One-stop health check (git, config, slash, MCP)
-scripts/lint-config.sh   # Validates JSON/TOML and prompt index
-scripts/check-slash.sh   # Ensures manifest entries resolve to files
-scripts/check-mcp-exa.sh # Lightweight EXA MCP ping (requires EXA_API_KEY)
+scripts/doctor.sh          # One-stop health check (git, config, prompts, MCP)
+scripts/lint-config.sh     # Validates JSON/TOML and prompt index
+scripts/check-prompts.sh   # Ensures index entries resolve to top-level markdown files
+scripts/check-mcp-exa.sh   # Lightweight EXA MCP ping (requires EXA_API_KEY)
 ```
 
 Integrate `scripts/doctor.sh` into your pre-flight routine before large edits.
@@ -218,7 +221,7 @@ Use via `codex --profile my-profile`
 | `/ship` | `/prompts:ship` | Workflow orchestration |
 | `/execute` | `/prompts:execute` | Task execution |
 | Skills | Review prompts | Converted to `/prompts:*` |
-| Agents | `/slash:*` | Implemented via manifest + markdown commands |
+| Agents | `/prompts:*` (slash variants) | Simple top-level markdown commands |
 
 ## Resources
 

@@ -18,8 +18,8 @@ fi
 section "Config"
 "$ROOT_DIR/scripts/lint-config.sh"
 
-section "Slash"
-"$ROOT_DIR/scripts/check-slash.sh"
+section "Prompts"
+"$ROOT_DIR/scripts/check-prompts.sh"
 
 section "MCP"
 if [[ -z "${EXA_API_KEY:-}" ]]; then
